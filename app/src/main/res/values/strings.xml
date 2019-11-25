@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">INE</string>
+    <string name="first_last_name">Apellido Materno</string>
+    <string name="second_last_name">Apellido paterno</string>
+    <string name="name">Nombre</string>
+    <string name="street">Calle</string>
+    <string name="int_num">No. Interior</string>
+    <string name="ext_num">No. Exterior</string>
+    <string name="address">Dirección</string>
+    <string name="colony">Colonia</string>
+    <string name="zip_code">Código Postal</string>
+    <string name="personal_info">Datos personales</string>
+    <string name="birth_date">Fecha de nacimiento</string>
+    <string name="ine_number">Clave electoral</string>
+    <string name="others">Otros</string>
+    <string name="c_u_r_p">C.U.R.P</string>
+    <string name="register_date">Año de registro</string>
+    <string name="municipality">Municipio</string>
+    <string name="section">Sección</string>
+    <string name="locality">Localidad</string>
+    <string name="emit_year">Año de emisión</string>
+    <string name="expired">Vigencía</string>
+    <string name="save">Guardar</string>
+    <string name="wait">Espere ...</string>
+    <string name="filter">Filtro</string>
+</resources>
