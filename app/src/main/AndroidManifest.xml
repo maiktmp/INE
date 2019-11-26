@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.main.MainActivity">
+        <activity android:name=".ui.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -25,5 +25,6 @@
         </activity>
         <activity android:name=".ui.details.IneDetailActivity" />
         <activity android:name=".ui.fragment_container.FragmentContainerActivity" />
+        <activity android:name=".ui.main.MainActivity" />
     </application>
 </manifest>

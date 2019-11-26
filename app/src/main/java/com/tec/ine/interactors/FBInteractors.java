@@ -1,9 +1,17 @@
 package com.tec.ine.interactors;
 
+import android.app.Activity;
 import android.util.ArrayMap;
 import android.util.Log;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -30,6 +38,11 @@ public class FBInteractors {
 
 
     private FirebaseFirestore db;
+    private FirebaseAuth mAuth;
+
+    public static String ADMIN = "desmovil@admin.com";
+    public static String CONSULTOR = "desmovil@consultor.com";
+
 
     public static FBInteractors getInstance() {
         instance = instance == null ? new FBInteractors() : instance;
@@ -39,6 +52,28 @@ public class FBInteractors {
     public FBInteractors() {
         db = FirebaseFirestore.getInstance();
         storage = FirebaseStorage.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+
+    }
+
+    public void logOut() {
+        FirebaseAuth.getInstance().signOut();
+    }
+
+    public void getAuthUser(CBGeneric<FirebaseUser> cb) {
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        cb.onResult(currentUser);
+    }
+
+    public void signUp(Activity activity, String email, String password, CBGeneric<FirebaseUser> cb) {
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(activity, task -> {
+                    if (task.isSuccessful()) {
+                        getAuthUser(cb);
+                    } else {
+                        cb.onResult(null);
+                    }
+                });
     }
 
     public void getAll(Boolean active, CBGeneric<List<INE>> cb) {

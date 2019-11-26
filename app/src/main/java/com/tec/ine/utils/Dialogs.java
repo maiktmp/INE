@@ -46,7 +46,7 @@ public class Dialogs {
     ) {
         new MaterialAlertDialogBuilder(context)
                 .setMessage(message)
-                .setPositiveButton("Eliminar", (dialogInterface, i) -> cb.done())
+                .setPositiveButton("Aceptar", (dialogInterface, i) -> cb.done())
                 .show();
     }
 

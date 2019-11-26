@@ -18,8 +18,11 @@ import com.tec.ine.R;
 import com.tec.ine.databinding.ActivityIneDetailBinding;
 import com.tec.ine.interactors.FBInteractors;
 import com.tec.ine.models.INE;
+import com.tec.ine.ui.form.FragmentForm;
 import com.tec.ine.ui.fragment_container.FragmentContainerActivity;
 import com.tec.ine.utils.Dialogs;
+
+import java.util.Objects;
 
 public class IneDetailActivity extends AppCompatActivity {
 
@@ -57,6 +60,17 @@ public class IneDetailActivity extends AppCompatActivity {
 
     private void fetchDetails() {
         vBind.progressBar.setVisibility(View.VISIBLE);
+        vBind.tvDetails.setText(null);
+
+
+        FBInteractors.getInstance().getAuthUser(user -> {
+            if (!Objects.equals(user.getEmail(), FBInteractors.ADMIN)) {
+                vBind.btnDelete.setVisibility(View.GONE);
+                vBind.btnUpdate.setVisibility(View.GONE);
+            }
+        });
+
+
         fbInteractors.getINE(documentId, ine -> {
             this.ine = ine;
 

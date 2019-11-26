@@ -135,11 +135,6 @@ public class FragmentForm extends Fragment implements DatePickerDialog.OnDateSet
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
 
-
-        //TODO VALIDATE CONTEXT
-        // ADD SCROLL
-        // OCULTAR SPINNER AL RECARGAR
-        // BOTON BUSCAR
         storageRef.child(ine.getImg()).getDownloadUrl().addOnSuccessListener(uri ->
                 Glide.with(getContext())
                         .load(uri)

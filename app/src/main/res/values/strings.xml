@@ -23,4 +23,6 @@
     <string name="save">Guardar</string>
     <string name="wait">Espere ...</string>
     <string name="filter">Filtro</string>
+    <string name="user">Usuario</string>
+    <string name="password">Contraselña</string>
 </resources>
