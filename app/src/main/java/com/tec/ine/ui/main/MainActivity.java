@@ -14,13 +14,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.dynamic.IFragmentWrapper;
 import com.tec.ine.R;
 import com.tec.ine.databinding.ActivityMainBinding;
+import com.tec.ine.interactors.FBInteractors;
 import com.tec.ine.ui.consult.ConsultFragment;
 import com.tec.ine.ui.form.FragmentForm;
 import com.tec.ine.ui.list.ListFragment;
 import com.tec.ine.utils.Codes;
 import com.tec.ine.utils.Dialogs;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements FragmentForm.FragmentFormInterface {
 
@@ -65,7 +69,10 @@ public class MainActivity extends AppCompatActivity implements FragmentForm.Frag
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_logout:
-
+                Dialogs.alert(this, "¿Desea cerrar salir?", () -> {
+                    FBInteractors.getInstance().logOut();
+                    finish();
+                });
                 return true;
             case R.id.action_about:
                 String info = "";
@@ -84,7 +91,13 @@ public class MainActivity extends AppCompatActivity implements FragmentForm.Frag
 
     public void setUpTabLayout() {
         adapter = new TabAdapter(getSupportFragmentManager(), TabAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        adapter.addFragment(new FragmentForm(), "Alta");
+        FBInteractors.getInstance().getAuthUser(user -> {
+            if (Objects.equals(user.getEmail(), FBInteractors.ADMIN)) {
+                adapter.addFragment(new FragmentForm(), "Alta");
+            }
+        });
+
+
         adapter.addFragment(new ConsultFragment(), "Consultar");
         adapter.addFragment(new ListFragment(), "Listar");
 
