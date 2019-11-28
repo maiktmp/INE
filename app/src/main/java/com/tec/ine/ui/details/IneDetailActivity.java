@@ -116,7 +116,7 @@ public class IneDetailActivity extends AppCompatActivity {
             details += " <b>C.P.: </b> " + ine.getZipCode();
             details += " <br/>";
             details += " <br/>";
-            details += " <b>Num. Int.: </b> " + ine.getIntNum();
+            details += " <b>Num. Int.: </b> " + (ine.getIntNum() == null ? "S/N" : ine.getIntNum());
             details += " <b>Num. Ext.: </b> " + ine.getExtNum();
             details += " <br/>";
             details += " <br/>";

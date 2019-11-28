@@ -20,6 +20,7 @@ import com.tec.ine.databinding.ActivityMainBinding;
 import com.tec.ine.interactors.FBInteractors;
 import com.tec.ine.ui.consult.ConsultFragment;
 import com.tec.ine.ui.form.FragmentForm;
+import com.tec.ine.ui.home.HomeFragment;
 import com.tec.ine.ui.list.ListFragment;
 import com.tec.ine.utils.Codes;
 import com.tec.ine.utils.Dialogs;
@@ -76,11 +77,11 @@ public class MainActivity extends AppCompatActivity implements FragmentForm.Frag
                 return true;
             case R.id.action_about:
                 String info = "";
-                info += "<b>Alumna: </b>";
+                info += "<b>Alumna: </b> Vanesa Hernández López 16280788";
                 info += " <br/>";
-                info += "<b>Materia: </b>";
+                info += "<b>Materia: </b> Desarrollo de aplicaciones móviles";
                 info += " <br/>";
-                info += "<b>Profesor: </b>";
+                info += "<b>Profesor: Rocio Elizabeth Pulido Alba</b>";
 
                 Dialogs.alert(this, String.valueOf(Html.fromHtml(info)));
                 return true;
@@ -91,13 +92,13 @@ public class MainActivity extends AppCompatActivity implements FragmentForm.Frag
 
     public void setUpTabLayout() {
         adapter = new TabAdapter(getSupportFragmentManager(), TabAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+
+        adapter.addFragment(new HomeFragment(), "Home");
         FBInteractors.getInstance().getAuthUser(user -> {
             if (Objects.equals(user.getEmail(), FBInteractors.ADMIN)) {
                 adapter.addFragment(new FragmentForm(), "Alta");
             }
         });
-
-
         adapter.addFragment(new ConsultFragment(), "Consultar");
         adapter.addFragment(new ListFragment(), "Listar");
 
