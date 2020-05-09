@@ -96,9 +96,9 @@ public class MainActivity extends AppCompatActivity implements FragmentForm.Frag
         adapter.addFragment(new HomeFragment(), "Home");
         FBInteractors.getInstance().getAuthUser(user -> {
             if (Objects.equals(user.getEmail(), FBInteractors.ADMIN)) {
-                adapter.addFragment(new FragmentForm(), "Alta");
             }
         });
+        adapter.addFragment(new FragmentForm(), "Alta");
         adapter.addFragment(new ConsultFragment(), "Consultar");
         adapter.addFragment(new ListFragment(), "Listar");
 

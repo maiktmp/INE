@@ -27,13 +27,12 @@ public class LoginActivity extends AppCompatActivity {
         fbInteractors.getAuthUser(user -> {
             if (user == null) {
                 vBind = DataBindingUtil.setContentView(this, R.layout.activity_login);
+                setUpLoginBtn();
             } else {
                 startActivity(new Intent(this, MainActivity.class));
                 finish();
             }
         });
-
-        setUpLoginBtn();
     }
 
     private void setUpLoginBtn() {
