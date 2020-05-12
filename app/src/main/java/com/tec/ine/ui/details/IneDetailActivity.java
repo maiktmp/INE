@@ -65,9 +65,8 @@ public class IneDetailActivity extends AppCompatActivity {
 
         FBInteractors.getInstance().getAuthUser(user -> {
             if (!Objects.equals(user.getEmail(), FBInteractors.ADMIN)) {
-                vBind.btnDelete.setVisibility(View.GONE);
-                vBind.btnUpdate.setVisibility(View.GONE);
             }
+
         });
 
 
@@ -129,13 +128,13 @@ public class IneDetailActivity extends AppCompatActivity {
             vBind.tvDetails.setText(Html.fromHtml(details));
 
 
-            if (ine.getActive()) {
                 setUpUpdateBtn();
                 setUpDeleteBtn();
-            } else {
-                vBind.btnDelete.setVisibility(View.GONE);
-                vBind.btnUpdate.setVisibility(View.GONE);
-            }
+//            if (ine.getActive()) {
+//            } else {
+//                vBind.btnDelete.setVisibility(View.GONE);
+//                vBind.btnUpdate.setVisibility(View.GONE);
+//            }
         });
 
     }
